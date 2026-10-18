@@ -125,7 +125,7 @@ class TasbihRosaryView(context: Context) : View(context) {
     /** Kullanici bir boncuk cekti; sayma burada yapilir. */
     var onPull: (() -> Unit)? = null
 
-    var material: TasbihMaterial = TasbihMaterial.KUKA
+    var material: TasbihMaterial = TasbihMaterial.ZUMRUT
         set(value) { if (field != value) { field = value; invalidate() } }
 
     var progress: Float = 0f

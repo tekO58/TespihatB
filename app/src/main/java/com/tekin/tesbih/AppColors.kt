@@ -25,27 +25,27 @@ object AppColors {
     private fun c(dark: String, light: String): Int = ThemeMode.pick(dark, light)
 
     // Zeminler
-    val BG_APP = c("#12172B", "#F4F1EA")
-    val BG_CARD = c("#151D32", "#FFFFFF")
-    val BG_FIELD = c("#0E1526", "#EEF0F5")
-    val BG_ELEVATED = c("#1A2440", "#FFFFFF")
+    val BG_APP = c("#0B1F18", "#F4F1EA")
+    val BG_CARD = c("#10291F", "#FFFFFF")
+    val BG_FIELD = c("#091A14", "#EEF0F5")
+    val BG_ELEVATED = c("#143426", "#FFFFFF")
 
     // Cizgiler
-    val STROKE = c("#26314D", "#DCE0EA")
-    val STROKE_STRONG = c("#333A55", "#C7CDDB")
+    val STROKE = c("#1F4031", "#DCE0EA")
+    val STROKE_STRONG = c("#2B5240", "#C7CDDB")
 
     // Metin
     val TEXT_PRIMARY = c("#F2EFE6", "#1B2033")
-    val TEXT_SECONDARY = c("#AEB5CF", "#4A5373")
+    val TEXT_SECONDARY = c("#B3C8BC", "#4A5373")
     /** Soluk metin: koyu ve acik zeminde en az ~4.9:1 kontrast (kucuk yazi okunur kalsin). */
-    val TEXT_MUTED = c("#8790AD", "#5F6785")
-    val TEXT_DIM = c("#5A6284", "#8A91AA")
-    val TEXT_FAINT = c("#4E587A", "#A3A9BE")
+    val TEXT_MUTED = c("#88A697", "#5F6785")
+    val TEXT_DIM = c("#5D7B6C", "#8A91AA")
+    val TEXT_FAINT = c("#4D6A5C", "#A3A9BE")
 
     // Vurgu
     val ACCENT = c("#E8B34A", "#A8750F")
     val ACCENT_LIGHT = c("#F3C765", "#C08A22")
-    val ON_ACCENT = c("#111522", "#FFFFFF")
+    val ON_ACCENT = c("#0B1F18", "#FFFFFF")
 
     // Durum
     val SUCCESS = c("#7FBF8C", "#2E8B4E")
@@ -57,10 +57,10 @@ object AppColors {
     val WARNING_DIM = c("#8E7A4E", "#8A7444")
 
     // Butonlar
-    val BTN_SECONDARY = c("#293451", "#E6E9F1")
-    val BTN_SECONDARY_ALT = c("#27304A", "#E9ECF3")
+    val BTN_SECONDARY = c("#1C3D2F", "#E6E9F1")
+    val BTN_SECONDARY_ALT = c("#1A392C", "#E9ECF3")
     /** Sonuc kartindaki kucuk baglanti butonu zemini. */
-    val BTN_LINK = c("#1D2741", "#EEF0F5")
+    val BTN_LINK = c("#143024", "#EEF0F5")
 
     // Bolum renkleri
     val SECTION_RESEARCH = c("#5B8DEF", "#3B6FD8")
@@ -80,8 +80,8 @@ object AppColors {
     // yazi okunmuyordu (Engel kontrolu secenekleri, sablon satirlari vb.).
     // Isimler ayni kaldi, degerler koyu zemine gore.
     val DIALOG_TEXT = c("#F2EFE6", "#1B2033")
-    val DIALOG_LABEL = c("#AEB5CF", "#4A5373")
-    val DIALOG_MUTED = c("#8C94AE", "#6B7390")
+    val DIALOG_LABEL = c("#B3C8BC", "#4A5373")
+    val DIALOG_MUTED = c("#8EAA9C", "#6B7390")
     val DIALOG_OK = c("#7FBF8C", "#2E8B4E")
     val DIALOG_DANGER = c("#E08A8A", "#C8473C")
     val DIALOG_ACCENT = c("#E8B34A", "#A8750F")
@@ -90,7 +90,7 @@ object AppColors {
     // Dialog icindeki bilgi kartlarinin zeminleri ve ayirici cizgiler.
     // Yazi renkleri yukaridakiler; bunlar yalnizca o yazinin arkasindaki
     // hafif renkli yuzey.
-    val DIALOG_SURFACE = c("#26304C", "#EEF0F5")
+    val DIALOG_SURFACE = c("#1C3D2F", "#EEF0F5")
     val DIALOG_SURFACE_AMBER = c("#3A2F17", "#FBF0D9")
     val DIALOG_SURFACE_OK = c("#17351F", "#E3F4E8")
     val DIALOG_SURFACE_DANGER = c("#3D1F22", "#FBE6E3")

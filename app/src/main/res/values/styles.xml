@@ -2,10 +2,11 @@
     <style name="Theme.Tesbih" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:fontFamily">sans</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:statusBarColor">#171717</item>
-        <item name="android:navigationBarColor">#171717</item>
-        <item name="colorPrimary">#6D5DD3</item>
-        <item name="colorPrimaryVariant">#5143A7</item>
-        <item name="colorSecondary">#D7B56D</item>
+        <item name="android:windowBackground">@color/baris_bg</item>
+        <item name="android:statusBarColor">@color/baris_bg</item>
+        <item name="android:navigationBarColor">@color/baris_bg</item>
+        <item name="colorPrimary">#1E7A55</item>
+        <item name="colorPrimaryVariant">#0F5C40</item>
+        <item name="colorSecondary">#E3B654</item>
     </style>
 </resources>

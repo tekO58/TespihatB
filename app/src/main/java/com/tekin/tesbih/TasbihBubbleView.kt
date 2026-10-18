@@ -19,7 +19,7 @@ import kotlin.math.sin
  */
 class TasbihBubbleView(context: Context) : View(context) {
 
-    var material: TasbihMaterial = TasbihMaterial.KUKA
+    var material: TasbihMaterial = TasbihMaterial.ZUMRUT
         set(value) { field = value; invalidate() }
     var count: Int = 0
         set(value) { field = value; invalidate() }

@@ -46,6 +46,9 @@ enum class TasbihMaterial(
     TURUNCU_KEHRIBAR("Turuncu kehribar", "koyu bal", "Sıcak turuncu, yarı saydam ve parlak.",
         0xFFFFB27A.toInt(), 0xFFE0561C.toInt(), 0xFF6E1E05.toInt(),
         0.85f, 0.65f, Texture.CLOUD, Metal.GOLD, 0xFFC4521E.toInt(), 0xFFF07A2A.toInt()),
+    ZUMRUT("Zümrüt", "altın işlemeli", "Koyu zümrüt yeşili, altın ara parçalar ve altın püskül.",
+        0xFF6FD6A6.toInt(), 0xFF0E5A3C.toInt(), 0xFF02170F.toInt(),
+        0.95f, 0.45f, Texture.CLOUD, Metal.GOLD, 0xFFC99A3A.toInt(), 0xFF3FCF8E.toInt()),
     YESIL("Yeşil akik", "doğal taş", "Doğal taş görünümü, parlak ve derin renk.",
         0xFF7FD9A0.toInt(), 0xFF1E7A45.toInt(), 0xFF0A2E19.toInt(),
         0.75f, 0.2f, Texture.VEINS, Metal.SILVER, 0xFF1F6B40.toInt(), 0xFF2FBF71.toInt()),
@@ -89,7 +92,7 @@ enum class TasbihMaterial(
 
         /** Yeni tesbihlere sirayla verilen materyaller. */
         fun forIndex(index: Int): TasbihMaterial {
-            val order = listOf(KUKA, YESIL, KEHRIBAR, SIYAH, LACIVERT, MOR, KIRMIZI, TURKUAZ, TURUNCU_KEHRIBAR, BEYAZ)
+            val order = listOf(ZUMRUT, KUKA, YESIL, KEHRIBAR, SIYAH, LACIVERT, MOR, KIRMIZI, TURKUAZ, TURUNCU_KEHRIBAR, BEYAZ)
             return order[((index % order.size) + order.size) % order.size]
         }
 

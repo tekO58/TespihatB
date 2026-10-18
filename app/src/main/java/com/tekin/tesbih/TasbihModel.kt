@@ -34,7 +34,7 @@ data class Tasbih(
     /** Bu tesbihte bugune kadar cekilen toplam. Sifirlamada korunur. */
     val total: Long = 0,
     /** Tespih gorunumu; yalnizca bu tesbihe ait. */
-    val material: TasbihMaterial = TasbihMaterial.KUKA,
+    val material: TasbihMaterial = TasbihMaterial.ZUMRUT,
     /** Her N adette titresim; 0 kapali, 1 her adette. */
     val vibrateEvery: Int = 33,
     val finishVibe: TasbihFinishVibe = TasbihFinishVibe.LONG,

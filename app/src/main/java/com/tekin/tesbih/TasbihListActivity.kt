@@ -1,9 +1,11 @@
 package com.tekin.tesbih
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -51,7 +53,34 @@ class TasbihListActivity : AppCompatActivity() {
             background = TasbihUi.card(this@TasbihListActivity, radiusDp = 0)
         }
         root.addView(nav, TasbihUi.lp(TasbihUi.MATCH, TasbihUi.WRAP))
-        setContentView(root)
+        if (savedInstanceState == null) setContentView(withSplash(root)) else setContentView(root)
+    }
+
+    /** Acilista tam logo kisa bir sure gorunur, sonra solarak kaybolur. Dokununca hemen gecer. */
+    private fun withSplash(content: View): View {
+        val frame = FrameLayout(this)
+        frame.addView(content, FrameLayout.LayoutParams(TasbihUi.MATCH, TasbihUi.MATCH))
+        val splash = FrameLayout(this).apply { setBackgroundColor(AppColors.BG_APP); isClickable = true }
+        val logo = ImageView(this).apply {
+            setImageResource(R.drawable.baris_tespihat_logo)
+            scaleType = ImageView.ScaleType.FIT_CENTER
+            adjustViewBounds = true
+        }
+        val size = (resources.displayMetrics.widthPixels * 0.78f).toInt()
+        splash.addView(logo, FrameLayout.LayoutParams(size, size, Gravity.CENTER))
+        frame.addView(splash, FrameLayout.LayoutParams(TasbihUi.MATCH, TasbihUi.MATCH))
+        var gone = false
+        val hide = Runnable {
+            if (gone) return@Runnable
+            gone = true
+            splash.animate().alpha(0f).setDuration(350).withEndAction { frame.removeView(splash) }.start()
+        }
+        splash.setOnClickListener { hide.run() }
+        logo.alpha = 0f
+        logo.scaleX = 0.92f; logo.scaleY = 0.92f
+        logo.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(450).start()
+        splash.postDelayed(hide, 1400)
+        return frame
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -101,7 +130,8 @@ class TasbihListActivity : AppCompatActivity() {
         head.addView(pill("＋  Tesbih Ekle") { TasbihActions.openSettings(this, null) })
         body.addView(head)
 
-        body.addView(todayCard(), TasbihUi.lp(TasbihUi.MATCH, TasbihUi.WRAP).apply { topMargin = dp(18); bottomMargin = dp(6) })
+        body.addView(quoteCard(), TasbihUi.lp(TasbihUi.MATCH, TasbihUi.WRAP).apply { topMargin = dp(18) })
+        body.addView(todayCard(), TasbihUi.lp(TasbihUi.MATCH, TasbihUi.WRAP).apply { topMargin = dp(10); bottomMargin = dp(6) })
 
         if (list.isEmpty()) {
             body.addView(emptyState())
@@ -111,6 +141,40 @@ class TasbihListActivity : AppCompatActivity() {
             body.addView(tasbihCard(t, highlighted = t.id == lastId),
                 TasbihUi.lp(TasbihUi.MATCH, TasbihUi.WRAP).apply { topMargin = dp(10) })
         }
+    }
+
+    /** Gunun sozu karti; dokununca paylasim acilir. */
+    private fun quoteCard(): View {
+        val q = TasbihQuotes.today()
+        val card = TasbihUi.column(this).apply {
+            background = TasbihUi.card(this@TasbihListActivity,
+                stroke = TasbihUi.mix(AppColors.ACCENT, AppColors.BG_CARD, 0.45f))
+            setPadding(dp(16), dp(14), dp(16), dp(14))
+            isClickable = true
+            setOnClickListener { shareQuote(q) }
+        }
+        card.addView(TasbihUi.text(this, "✦  GÜNÜN SÖZÜ", 12f, AppColors.ACCENT, bold = true).apply {
+            letterSpacing = 0.08f
+        })
+        card.addView(TasbihUi.text(this, q.text, 16f, AppColors.TEXT_PRIMARY).apply {
+            setPadding(0, dp(8), 0, dp(6))
+            setLineSpacing(0f, 1.2f)
+            setTypeface(android.graphics.Typeface.SERIF)
+        })
+        val foot = TasbihUi.row(this)
+        foot.addView(TasbihUi.text(this, q.source, 12.5f, AppColors.TEXT_MUTED), TasbihUi.lp(0, TasbihUi.WRAP, 1f))
+        foot.addView(TasbihUi.text(this, "Paylaş ›", 12.5f, AppColors.ACCENT))
+        card.addView(foot)
+        return card
+    }
+
+    private fun shareQuote(q: TasbihQuotes.Quote) {
+        val text = "\u201C${q.text}\u201D\n— ${q.source}\n\n${getString(R.string.app_name)}"
+        val send = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, text)
+        }
+        runCatching { startActivity(Intent.createChooser(send, "Günün sözünü paylaş")) }
     }
 
     private fun todayCard(): View {
@@ -213,7 +277,7 @@ class TasbihListActivity : AppCompatActivity() {
             setPadding(dp(18), dp(20), dp(18), dp(18))
             gravity = Gravity.CENTER_HORIZONTAL
         }
-        box.addView(TasbihBeadsView(this, TasbihMaterial.KEHRIBAR), TasbihUi.lp(dp(84), dp(92)))
+        box.addView(TasbihBeadsView(this, TasbihMaterial.ZUMRUT), TasbihUi.lp(dp(84), dp(92)))
         box.addView(TasbihUi.text(this, "Henüz tesbihin yok", 16f, bold = true).apply { gravity = Gravity.CENTER },
             TasbihUi.lp(TasbihUi.WRAP, TasbihUi.WRAP).apply { topMargin = dp(10) })
         box.addView(TasbihUi.text(this, "“Tesbih Ekle” ile kendi tesbihini oluştur ya da aşağıdan hızlıca başla.", 13.5f, AppColors.TEXT_SECONDARY).apply { gravity = Gravity.CENTER },

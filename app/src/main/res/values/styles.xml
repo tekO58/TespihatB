@@ -1,0 +1,11 @@
+<resources>
+    <style name="Theme.Tesbih" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#171717</item>
+        <item name="android:navigationBarColor">#171717</item>
+        <item name="colorPrimary">#6D5DD3</item>
+        <item name="colorPrimaryVariant">#5143A7</item>
+        <item name="colorSecondary">#D7B56D</item>
+    </style>
+</resources>

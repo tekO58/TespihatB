@@ -6,7 +6,7 @@ android {
     namespace 'com.tekin.tesbih'
     compileSdk 34
     defaultConfig {
-        applicationId "com.tekin.sedatespih"
+        applicationId "com.tekin.baristespihat"
         minSdk 26
         targetSdk 34
         versionCode 1

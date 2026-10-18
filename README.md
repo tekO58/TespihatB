@@ -1,4 +1,4 @@
-# Seda Tespih
+# Barış Tespihat
 
 Standalone Android tesbih counter, ported from the tesbih module in `tekO58/workplanner-app`.
 
